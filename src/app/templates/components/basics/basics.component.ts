@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-basics',
@@ -8,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class BasicsComponent {
 
+  @ViewChild('formProducts') formProducts!: NgForm;
+
+  save() {
+    console.log( this.formProducts );
+  }
+
+  nameValid(): boolean {
+    return this.formProducts?.controls['product']?.invalid &&
+    this.formProducts?.controls['product']?.touched
+  }
 }
