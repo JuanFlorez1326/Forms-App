@@ -19,4 +19,9 @@ export class BasicsComponent {
     return this.formProducts?.controls['product']?.invalid &&
     this.formProducts?.controls['product']?.touched
   }
+
+  priceValid(): boolean {
+    return this.formProducts?.controls['price']?.touched &&
+    this.formProducts?.controls['price'].value < 0
+  }
 }
