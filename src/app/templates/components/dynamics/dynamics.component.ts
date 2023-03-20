@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { User } from '../../interfaces/user.interface';
+import { Games, User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-dynamics',
-  templateUrl: './dynamics.component.html',
-  styles: [
-  ]
+  templateUrl: './dynamics.component.html'
 })
 export class DynamicsComponent {
+  
+  newGame!: string;
 
   user: User = {
     name:'Juan Florez',
@@ -21,7 +21,20 @@ export class DynamicsComponent {
     ]
   }
 
+  addGame() {
+    const newFavorite: Games = {
+      id: this.user.games.length + 1,
+      nameGame: this.newGame
+    }
+    this.user.games.push({ ...newFavorite });
+    this.newGame = ''
+  }
+  
   save() {
+    console.log('Save Successfully');
+  }
 
+  delete( index: number) {
+    this.user.games.splice( index, 1)
   }
 }
