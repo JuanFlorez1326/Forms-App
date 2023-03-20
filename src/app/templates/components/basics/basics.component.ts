@@ -11,8 +11,18 @@ export class BasicsComponent {
 
   @ViewChild('formProducts') formProducts!: NgForm;
 
+  initialForm = {
+    product: 'RTX 4080 Ti',
+    price: 0,
+    stock: 0
+  }
+
   save() {
     console.log( this.formProducts );
+    this.formProducts.resetForm({
+      price: 0,
+      stock: 0
+    });
   }
 
   nameValid(): boolean {

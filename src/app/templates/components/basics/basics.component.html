@@ -12,7 +12,7 @@
                 <label class="col-sm-3 col-form-label">Product</label>
                 <div class="col-sm-9">
                     <input 
-                        ngModel 
+                        [ngModel]="initialForm.product" 
                         required
                         name="product" 
                         type="text" 
@@ -41,7 +41,7 @@
                 <label class="col-sm-3 col-form-label">Price</label>
                 <div class="col-sm-9">
                     <input 
-                        ngModel 
+                        [ngModel]="initialForm.price" 
                         required
                         name="price"
                         type="number" 
@@ -58,7 +58,7 @@
                 <label class="col-sm-3 col-form-label">Stock</label>
                 <div class="col-sm-9">
                     <input 
-                        ngModel
+                        [ngModel]="initialForm.stock"
                         required
                         name="stock"
                         type="number" 
