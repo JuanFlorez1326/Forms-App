@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class SwitchesComponent {
 
+  terms: boolean = false
+
+  user = {
+    gender: 'M',
+    notifications: true
+  }
 }
