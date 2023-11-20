@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamics',
@@ -17,12 +17,26 @@ export class DynamicsComponent {
     ])
   });
 
+  public newFavorite: FormControl = new FormControl('', Validators.required)
+
+  public onDeleteFavorite( item: any) {
+    if (item) this.favoriteGamesControl.removeAt(item);
+  }
+
+  public onAddToFavorites() {
+    if (this.newFavorite.invalid) return;
+    const game = this.newFavorite.value;
+    this.favoriteGamesControl.push(this.fb.control(game, Validators.required));
+    this.newFavorite.reset();
+  }
+
   public onSubmit(): void {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
       return;
     }
     console.log(this.formGroup.value);
+    (this.formGroup.controls['favoriteGames'] as FormArray) =  this.fb.array([]);
     this.formGroup.reset();
   }
   
@@ -35,7 +49,7 @@ export class DynamicsComponent {
       && this.formGroup.controls[field].touched;
   }
 
-  isValidFieldInArray( formArray: FormArray, index: number ) {
+  public isValidFieldInArray( formArray: FormArray, index: number ) {
     return formArray.controls[index].errors
       && formArray.controls[index].touched;
   }
