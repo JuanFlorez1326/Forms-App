@@ -8,6 +8,13 @@ import { MenuItems } from '../interfaces/menu-items.interface';
 })
 export class SidemenuComponent {
 
+  authMenu: MenuItems[] = [
+    {
+      text: 'register',
+      route: './auth/register'
+    }
+  ];
+
   templateMenu: MenuItems[] = [
     {
       text: 'basics',

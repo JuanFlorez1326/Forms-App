@@ -1,3 +1,15 @@
+<h2>Validations</h2>
+<hr>
+
+<ul class="list-group">
+    <li 
+        *ngFor="let item of authMenu"
+        [routerLink]="[ item.route ]"
+        routerLinkActive="active"
+        class="list-group-item" 
+    > {{ item.text | titlecase }} </li>
+</ul>
+
 <h2>Template</h2>
 <hr>
 
